@@ -8,7 +8,10 @@ import axios from 'axios'
 
 class App extends Component {
   state = {
-    beers: [],
+    beers: [{
+      name:"Filling up...",
+      url:"http://www.google.com"
+    }],
     beersBySearch: [],
     categories: [],
     searchTerm: '',
