@@ -7,23 +7,18 @@ class BeerDeets extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-        beer: {}
+      beer: {}
     }
-
   }
 
   componentDidMount () {
+    axios
+      .get(`http://apichallenge.canpango.com/beers/${this.props.beerId}`)
+      .then(res => {
+        const beer = res.data
 
-    axios.get(`http://apichallenge.canpango.com/beers/${this.props.beerId}`).then(res => {
-      const beer = res.data
-     
-    
-      console.log('here bro',this.state)
-   
-    
-      this.setState({ beer: beer })
-  
-  })
+        this.setState({ beer: beer })
+      })
   }
 
   getCategoryName = num => {
@@ -35,34 +30,31 @@ class BeerDeets extends React.Component {
   }
 
   parseUrlToNumber = url => {
-    let strL = url.length
-    let res = url.charAt(strL - 2)
-
-    return res
+    let parts = url.split('/')
+    let lastSegment = parts.pop() || parts.pop()
+    return lastSegment
   }
   render () {
-
     return (
       <div className='App'>
 
         <div className='btn'>
           <span>
             {this.state.beer.name}
-            
+
           </span>
         </div>
 
-        <div className="beerDiv">
-        ibu: {this.state.beer.ibu}, <br />
+        <div className='beerDiv'>
+          ibu: {this.state.beer.ibu}, <br />
           calories: {this.state.beer.calories}, <br />
           abv: {this.state.beer.abv}, <br />
           style: {this.state.beer.style}, <br />
           Brewery location: {this.state.beer.brewery_location}, <br />
 
-          </div>
-       
+        </div>
 
-       <Link to='/'>
+        <Link to='/'>
           <div className='btnLike'>
             Back to Brews
 

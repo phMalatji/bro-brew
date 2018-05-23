@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import './App.css'
 // import BeerCategories from './lib/BeerCategories';
 import Beers from './lib/Beers'
-import { BrowserRouter as Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 class App extends Component {
@@ -87,6 +87,12 @@ class App extends Component {
     return isUserSearching
   }
 
+  parseUrlToNumber = url => {
+    let parts = url.split('/')
+    let lastSegment = parts.pop() || parts.pop()
+    return lastSegment
+  }
+
   render () {
     return (
       <div className='App'>
@@ -126,7 +132,10 @@ class App extends Component {
         <div id='searchBeersDiv' className={this.showSearchBeers()}>
          {
            this.state.beersBySearch.map(beer => 
-            <Link to="/beerdetail">
+            <Link
+            key={beer.name}
+            to={`/beerdeets/${this.parseUrlToNumber(beer.url)}`}
+          >
             <div key={beer.name}
             className='beerHover'
             > 
