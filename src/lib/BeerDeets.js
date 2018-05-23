@@ -7,7 +7,14 @@ class BeerDeets extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      beer: {}
+      beer: {
+        name:'Preparing your beer',
+        ibu: '...',
+        calories: '...',
+        abv: '...',
+        style: '...',
+      brewery_location:'...'
+      }
     }
   }
 
@@ -46,11 +53,11 @@ class BeerDeets extends React.Component {
         </div>
 
         <div className='beerDiv'>
-          ibu: {this.state.beer.ibu}, <br />
-          calories: {this.state.beer.calories}, <br />
-          abv: {this.state.beer.abv}, <br />
-          style: {this.state.beer.style}, <br />
-          Brewery location: {this.state.beer.brewery_location}, <br />
+          ibu: {this.state.beer.ibu} <br />
+          calories: {this.state.beer.calories} <br />
+          abv: {this.state.beer.abv}<br />
+          style: {this.state.beer.style} <br />
+          Brewery location: {this.state.beer.brewery_location} <br />
 
         </div>
 
