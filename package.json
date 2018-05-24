@@ -2,7 +2,7 @@
   "name": "canpanapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://phmalatji.github.io/bro-brew/",
+  "homepage": ".",
   
   "dependencies": {
     "axios": "^0.18.0",
